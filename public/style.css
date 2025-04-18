@@ -1,0 +1,397 @@
+:root {
+  --background: #0f0f0f;
+  --panel-bg: #141414;
+  --text: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --border: #282828;
+  --primary: #ffffff50;
+  --radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px; /* Aumentado de 10px para 40px para criar mais espaço nas bordas */
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  gap: 40px;
+}
+
+.left-panel {
+  width: 480px;
+}
+
+.preview {
+  background-color: var(--panel-bg);
+  height: 280px; /* Altura aumentada (era 242px) */
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 14px;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 15px;
+  text-align: center;
+  padding: 12px;
+}
+
+/* Classe para quando o card estiver carregado - remove visual da div preview */
+.preview.card-loaded {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.preview-message {
+  margin: 40px;
+  margin: 70px;
+}
+
+.preview iframe {
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto; /* Para garantir centralização perfeita */
+  display: block; /* Remove espaços indesejados */
+}
+
+.preview.error-loading {
+  background-color: var(--panel-bg);
+}
+
+.preview a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.code-tabs {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+  gap: 10px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px 0;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: #c0c0c0;
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: #1d1d1d;
+  border-color: #3a3a3a;
+  transform: translateY(-1px);
+}
+
+.tab-button.active {
+  background-color: var(--primary);
+  color: rgb(255, 255, 255);
+  border-color: var(--primary);
+}
+
+.tab-button.active:hover {
+  background-color: #ffffff50;
+  transform: translateY(-1px);
+}
+
+.tab-button.active::after {
+  display: none;
+}
+
+.code-display {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  color: #00a2ff;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 500;
+  overflow: auto;
+  white-space: normal;
+  word-break: break-word;
+  margin-bottom: 5px;
+  min-height: 70px;
+  max-height: none; /* Remover limitação de altura máxima */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.code-display #code-output {
+  max-width: 100%;
+  margin: 0 auto;
+  display: inline;
+  line-height: 1.4;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  overflow-wrap: break-word;
+}
+
+.right-panel {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+
+.subtitle a {
+  text-decoration: none;
+  color: #00a2ff;
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#youtube_id {
+  background-color: #000;
+}
+
+label {
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.info-icon {
+  color: var(--text-secondary);
+  font-size: 10px;
+  cursor: help;
+}
+
+input[type="text"],
+select {
+  padding: 8px 10px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 13px;
+  height: 36px;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'%3E%3Cpath fill='%23fff' d='M0 0h8L4 6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 24px;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 8px 0;
+}
+
+.copy-button {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 6px;
+  transition: all 0.2s ease;
+}
+
+copy-button:hover {
+  background-color: #1d1d1d;
+  border-color: #3a3a3a;
+  transform: translateY(-1px);
+}
+
+.range-value {
+  text-align: right;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.more-info {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.more-info-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+  text-decoration: none;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.more-info-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  height: 47px;
+  padding-top: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 13px;
+  position: relative;
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-label .checkmark {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 40%;
+  margin-left: 10px;
+  order: 2;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label:hover .checkmark {
+  border-color: #3a3a3a;
+}
+
+.checkbox-label input:checked ~ .checkmark {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox-label .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid rgb(255, 255, 255);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .title,
+  .subtitle {
+    order: 0;
+  }
+
+  .right-panel {
+    order: 1;
+    margin-bottom: 20px;
+  }
+
+  .left-panel {
+    order: 2;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .right-panel .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-row:first-of-type {
+    order: 2;
+  }
+
+  .form-row:not(:first-of-type),
+  .checkbox-group,
+  .more-info {
+    order: 3;
+  }
+
+  #youtube_id {
+    font-size: 14px;
+    height: 42px;
+  }
+}

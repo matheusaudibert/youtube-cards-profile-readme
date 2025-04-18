@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Cards for Github</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <main class="main">
+      <section class="left-panel">
+        <div class="preview">
+          <div class="preview-message">
+            Enter a Youtube video link or ID to preview your card
+          </div>
+        </div>
+        <div class="code-tabs">
+          <button class="tab-button active" data-format="markdown">
+            MARKDOWN
+          </button>
+          <button class="tab-button" data-format="html">HTML</button>
+          <button class="tab-button" data-format="url">URL</button>
+        </div>
+        <div class="code-display">
+          <div id="code-output">
+            [![YouTube
+            Card](https://example.com/youtube-card)](https://youtube.com/watch?v=id)
+          </div>
+        </div>
+        <button class="copy-button" id="copy-button">Copy</button>
+      </section>
+
+      <section class="right-panel">
+        <div class="content">
+          <h1 class="title">🎥 youtube-cards-profile-readme</h1>
+          <p class="subtitle">
+            Use <a href="">youtube-cards</a> to display your videos anywhere.
+          </p>
+
+          <div>
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="youtube_id"
+                  placeholder="Enter a YouTube video link or ID"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Background Color</label>
+                <input type="text" id="background_color" placeholder="1A1C1F" />
+              </div>
+              <div class="form-group">
+                <label>Border Radius</label>
+                <input type="text" id="border_radius" placeholder="5" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Title Color</label>
+                <input type="text" id="title_color" placeholder="FFFFFF" />
+              </div>
+              <div class="form-group">
+                <label>Stats Color</label>
+                <input type="text" id="stats_color" placeholder="DEDEDE" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Theme</label>
+                <select id="theme">
+                  <option value="github">GitHub</option>
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Max Title Lines</label>
+                <input type="text" id="max_title_lines" placeholder="1" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Card Width</label>
+                <input type="text" id="card_width" placeholder="250" />
+              </div>
+              <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                  <span>Show duration</span>
+                  <input type="checkbox" id="show_duration" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="more-info">
+            <a href="#" class="more-info-link">More info ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "youtube-cards-profile-readme",
+  "version": "1.0.0",
+  "description": "Display YouTube videos as cards in your GitHub profile README",
+  "private": true,
+  "scripts": {
+    "dev": "serve public"
+  },
+  "keywords": [
+    "github",
+    "youtube",
+    "cards",
+    "profile",
+    "readme"
+  ],
+  "author": "Matheus Audibert",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
