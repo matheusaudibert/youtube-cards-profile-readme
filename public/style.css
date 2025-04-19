@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px; /* Aumentado de 10px para 40px para criar mais espaço nas bordas */
+  padding: 40px;
 }
 
 .main {
@@ -38,7 +38,7 @@ body {
 
 .preview {
   background-color: var(--panel-bg);
-  height: 280px; /* Altura aumentada (era 242px) */
+  height: 280px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   display: flex;
@@ -51,8 +51,6 @@ body {
   text-align: center;
   padding: 12px;
 }
-
-/* Classe para quando o card estiver carregado - remove visual da div preview */
 .preview.card-loaded {
   background-color: transparent;
   border: none;
@@ -67,8 +65,8 @@ body {
 .preview iframe {
   max-height: 100%;
   max-width: 100%;
-  margin: auto; /* Para garantir centralização perfeita */
-  display: block; /* Remove espaços indesejados */
+  margin: auto;
+  display: block;
 }
 
 .preview.error-loading {
@@ -137,7 +135,7 @@ body {
   word-break: break-word;
   margin-bottom: 5px;
   min-height: 70px;
-  max-height: none; /* Remover limitação de altura máxima */
+  max-height: none;
   text-align: center;
   display: flex;
   align-items: center;

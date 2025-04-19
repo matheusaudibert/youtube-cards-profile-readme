@@ -83,21 +83,21 @@ function generateCardUrl(videoId) {
 function updateCardPreview() {
   const inputValue = videoIdInput.value.trim();
 
-  // Se o input estiver vazio, mantém a mensagem padrão inicial
+  // If the input is empty, keep the default initial message
   if (!inputValue) {
     previewArea.innerHTML = `<div class="preview-message">Enter a Youtube video link or ID to preview your card</div>`;
-    previewArea.classList.remove("card-loaded"); // Remove classe para mostrar o container
-    previewArea.classList.remove("error-loading"); // Remove classe de erro caso exista
+    previewArea.classList.remove("card-loaded"); // Remove class to show the container
+    previewArea.classList.remove("error-loading"); // Remove error class if it exists
     return;
   }
 
   const videoId = extractYouTubeId(inputValue);
 
-  // Só mostra mensagem de erro se o input não estiver vazio E for inválido
+  // Only show an error message if the input is not empty AND invalid
   if (!videoId) {
     previewArea.innerHTML = `<div class="preview-message">Invalid YouTube video ID or URL</div>`;
-    previewArea.classList.remove("card-loaded"); // Remove classe para mostrar o container
-    previewArea.classList.add("error-loading"); // Adiciona classe de erro
+    previewArea.classList.remove("card-loaded"); // Remove class to show the container
+    previewArea.classList.add("error-loading"); // Add error class
     return;
   }
 
@@ -106,8 +106,8 @@ function updateCardPreview() {
 
   // Show loading indicator
   previewArea.innerHTML = `<div class="preview-message">Loading preview...</div>`;
-  previewArea.classList.remove("card-loaded"); // Mostra o container durante o carregamento
-  previewArea.classList.remove("error-loading"); // Remove classe de erro caso exista
+  previewArea.classList.remove("card-loaded"); // Show the container during loading
+  previewArea.classList.remove("error-loading"); // Remove error class if it exists
 
   // Create an iframe instead of an image for better SVG compatibility
   const iframe = document.createElement("iframe");
@@ -127,15 +127,15 @@ function updateCardPreview() {
     // In case of error, show informative message
     previewArea.innerHTML = `<div class="preview-message">Error loading preview. <br>Try accessing the link directly: <br><a href="${cardUrl}" target="_blank">Open card</a></div>`;
     previewArea.classList.add("error-loading");
-    previewArea.classList.remove("card-loaded"); // Remove a classe para mostrar o container
+    previewArea.classList.remove("card-loaded"); // Remove class to show the container
   };
 
-  // Adiciona um timeout para verificar se o carregamento falhou
+  // Add a timeout to check if loading failed
   const loadTimeout = setTimeout(() => {
     if (!previewArea.classList.contains("card-loaded")) {
-      iframe.onerror(); // Executa a função de erro
+      iframe.onerror(); // Execute the error function
     }
-  }, 10000); // 10 segundos
+  }, 10000); // 10 seconds
 
   // Set iframe source
   iframe.src = cardUrl;
@@ -176,7 +176,7 @@ tabButtons.forEach((button) => {
     button.classList.add("active");
     currentFormat = button.dataset.format;
 
-    // Remover a verificação de currentVideoId para permitir sempre a mudança de formato
+    // Remove the currentVideoId check to always allow format switching
     const cardUrl = currentVideoId
       ? generateCardUrl(currentVideoId)
       : "https://example.com/youtube-card";
