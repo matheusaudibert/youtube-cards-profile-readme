@@ -13,20 +13,16 @@ const codeOutput = document.getElementById("code-output");
 const copyButton = document.getElementById("copy-button");
 const tabButtons = document.querySelectorAll(".tab-button");
 
-// Store current code format and card settings
 let currentFormat = "markdown";
 let currentVideoId = "";
 
-// Extract YouTube ID from a link or direct ID
 function extractYouTubeId(input) {
   if (!input) return "";
 
-  // Check if it's a simple ID (11 characters)
   if (/^[a-zA-Z0-9_-]{11}$/.test(input)) {
     return input;
   }
 
-  // Extract from youtube.com/watch?v=ID links
   const regularMatch = input.match(
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/
   );
@@ -35,18 +31,14 @@ function extractYouTubeId(input) {
   return "";
 }
 
-// Generate card URL based on configured parameters
 function generateCardUrl(videoId) {
   if (!videoId) return "";
 
   const params = new URLSearchParams();
-  params.append("id", videoId);
 
-  // Theme
-  const theme = themeSelect.value;
-  params.append("theme", theme);
+  params.append("width", cardWidthInput.value.replace("px", "") || "250");
+  params.append("theme", themeSelect.value);
 
-  // Colors (remove # if present)
   if (backgroundColorInput.value) {
     params.append(
       "background_color",
@@ -62,93 +54,73 @@ function generateCardUrl(videoId) {
     params.append("stats_color", statsColorInput.value.replace("#", ""));
   }
 
-  // Other configurations
   const borderRadius = borderRadiusInput.value.replace("px", "");
   if (borderRadius) {
     params.append("border_radius", borderRadius);
   }
 
   params.append("max_title_lines", maxTitleLinesInput.value || "1");
-
-  const width = cardWidthInput.value.replace("px", "");
-  if (width) {
-    params.append("width", width || "250");
-  }
-
   params.append("show_duration", showDurationCheckbox.checked);
 
-  return `https://youtube-cards-wl3j.onrender.com/api?${params.toString()}`;
+  return `https://youtube-cards-0wtu.onrender.com/api/${videoId}?${params.toString()}`;
 }
 
 function updateCardPreview() {
   const inputValue = videoIdInput.value.trim();
 
-  // If the input is empty, keep the default initial message
   if (!inputValue) {
     previewArea.innerHTML = `<div class="preview-message">Enter a Youtube video link or ID to preview your card</div>`;
-    previewArea.classList.remove("card-loaded"); // Remove class to show the container
-    previewArea.classList.remove("error-loading"); // Remove error class if it exists
+    previewArea.classList.remove("card-loaded");
+    previewArea.classList.remove("error-loading");
     return;
   }
 
   const videoId = extractYouTubeId(inputValue);
 
-  // Only show an error message if the input is not empty AND invalid
   if (!videoId) {
     previewArea.innerHTML = `<div class="preview-message">Invalid YouTube video ID or URL</div>`;
-    previewArea.classList.remove("card-loaded"); // Remove class to show the container
-    previewArea.classList.add("error-loading"); // Add error class
+    previewArea.classList.remove("card-loaded");
+    previewArea.classList.add("error-loading");
     return;
   }
 
   currentVideoId = videoId;
   const cardUrl = generateCardUrl(videoId);
 
-  // Show loading indicator
   previewArea.innerHTML = `<div class="preview-message">Loading preview...</div>`;
-  previewArea.classList.remove("card-loaded"); // Show the container during loading
-  previewArea.classList.remove("error-loading"); // Remove error class if it exists
+  previewArea.classList.remove("card-loaded");
+  previewArea.classList.remove("error-loading");
 
-  // Create an iframe instead of an image for better SVG compatibility
   const iframe = document.createElement("iframe");
   iframe.style.width = "100%";
   iframe.style.height = "100%";
   iframe.style.border = "none";
   iframe.style.borderRadius = "var(--radius)";
 
-  // Use onload to confirm successful loading
   iframe.onload = function () {
     clearTimeout(loadTimeout);
     previewArea.classList.remove("error-loading");
-    previewArea.classList.add("card-loaded");
   };
 
   iframe.onerror = function () {
-    // In case of error, show informative message
     previewArea.innerHTML = `<div class="preview-message">Error loading preview. <br>Try accessing the link directly: <br><a href="${cardUrl}" target="_blank">Open card</a></div>`;
     previewArea.classList.add("error-loading");
-    previewArea.classList.remove("card-loaded"); // Remove class to show the container
+    previewArea.classList.remove("card-loaded");
   };
 
-  // Add a timeout to check if loading failed
   const loadTimeout = setTimeout(() => {
     if (!previewArea.classList.contains("card-loaded")) {
-      iframe.onerror(); // Execute the error function
+      iframe.onerror();
     }
-  }, 10000); // 10 seconds
+  }, 10000);
 
-  // Set iframe source
   iframe.src = cardUrl;
-
-  // Clear previous content and add iframe
   previewArea.innerHTML = "";
   previewArea.appendChild(iframe);
 
-  // Update code output with new preview
   updateCodeOutput(cardUrl);
 }
 
-// Update code output based on selected format
 function updateCodeOutput(cardUrl) {
   if (!cardUrl) return;
 
@@ -169,14 +141,12 @@ function updateCodeOutput(cardUrl) {
   }
 }
 
-// Switch between code formats
 tabButtons.forEach((button) => {
   button.addEventListener("click", () => {
     tabButtons.forEach((b) => b.classList.remove("active"));
     button.classList.add("active");
     currentFormat = button.dataset.format;
 
-    // Remove the currentVideoId check to always allow format switching
     const cardUrl = currentVideoId
       ? generateCardUrl(currentVideoId)
       : "https://example.com/youtube-card";
@@ -193,7 +163,6 @@ copyButton.addEventListener("click", function () {
   }, 2000);
 });
 
-// Register change listeners for all inputs for real-time updates
 function registerChangeListeners() {
   const inputs = [
     videoIdInput,
@@ -216,13 +185,44 @@ function registerChangeListeners() {
   });
 }
 
-// Set default values
-function setDefaultValues() {
-  // updateCardPreview();
+function setDefaultValues() {}
+
+const themes = {
+  dark: {
+    backgroundColor: "#0F0F0F",
+    titleColor: "#FFFFFF",
+    statsColor: "#DEDEDE",
+  },
+  light: {
+    backgroundColor: "#FFFFFF",
+    titleColor: "#000000",
+    statsColor: "#555555",
+  },
+  github: {
+    backgroundColor: "#0D1117",
+    titleColor: "#FFFFFF",
+    statsColor: "#DEDEDE",
+  },
+};
+
+function updatePlaceholdersForTheme(theme) {
+  const selectedTheme = themes[theme] || themes.github;
+
+  backgroundColorInput.placeholder = selectedTheme.backgroundColor.replace(
+    "#",
+    ""
+  );
+  titleColorInput.placeholder = selectedTheme.titleColor.replace("#", "");
+  statsColorInput.placeholder = selectedTheme.statsColor.replace("#", "");
 }
 
-// Initialization
+themeSelect.addEventListener("change", () => {
+  updatePlaceholdersForTheme(themeSelect.value);
+  updateCardPreview();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   registerChangeListeners();
   setDefaultValues();
+  updatePlaceholdersForTheme(themeSelect.value);
 });
