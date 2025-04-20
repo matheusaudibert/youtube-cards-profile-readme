@@ -36,7 +36,6 @@ function generateCardUrl(videoId) {
 
   const params = new URLSearchParams();
 
-  // Add query parameters
   params.append("width", cardWidthInput.value.replace("px", "") || "250");
   params.append("theme", themeSelect.value);
 
