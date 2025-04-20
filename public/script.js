@@ -36,6 +36,7 @@ function generateCardUrl(videoId) {
 
   const params = new URLSearchParams();
 
+  // Add query parameters
   params.append("width", cardWidthInput.value.replace("px", "") || "250");
   params.append("theme", themeSelect.value);
 
@@ -62,7 +63,9 @@ function generateCardUrl(videoId) {
   params.append("max_title_lines", maxTitleLinesInput.value || "1");
   params.append("show_duration", showDurationCheckbox.checked);
 
-  return `https://youtube-cards-0wtu.onrender.com/api/${videoId}?${params.toString()}`;
+  const url = `https://youtube-cards-0wtu.onrender.com/api/${videoId}?${params.toString()}`;
+  console.log("Generated Card URL:", url); // Log the generated URL for debugging
+  return url;
 }
 
 function updateCardPreview() {
@@ -100,19 +103,22 @@ function updateCardPreview() {
   iframe.onload = function () {
     clearTimeout(loadTimeout);
     previewArea.classList.remove("error-loading");
+    previewArea.classList.add("card-loaded");
+    console.log("Iframe loaded successfully."); // Log success
   };
 
   iframe.onerror = function () {
     previewArea.innerHTML = `<div class="preview-message">Error loading preview. <br>Try accessing the link directly: <br><a href="${cardUrl}" target="_blank">Open card</a></div>`;
     previewArea.classList.add("error-loading");
     previewArea.classList.remove("card-loaded");
+    console.error("Error loading iframe:", cardUrl); // Log error
   };
 
   const loadTimeout = setTimeout(() => {
     if (!previewArea.classList.contains("card-loaded")) {
       iframe.onerror();
     }
-  }, 10000);
+  }, 15000); // Increase timeout to 15 seconds
 
   iframe.src = cardUrl;
   previewArea.innerHTML = "";
