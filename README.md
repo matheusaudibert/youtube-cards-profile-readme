@@ -35,8 +35,6 @@ You can customize the card using the following query parameters:
 
 _To see the limits and more details for each option, check out the project [Youtube Cards](https://github.com/matheusaudibert/youtube-cards)_.
 
----
-
 ## Example URL and Result
 
 ```markdown
@@ -44,7 +42,5 @@ _To see the limits and more details for each option, check out the project [Yout
 ```
 
 [![YouTube Card](https://youtube-cards-0wtu.onrender.com/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
-
----
 
 _If you're using this in your profile, feel free to show support and give this repo a ⭐ star! It means a lot, thank you :)_
