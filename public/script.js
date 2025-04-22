@@ -154,7 +154,7 @@ tabButtons.forEach((button) => {
 
     const cardUrl = currentVideoId
       ? generateCardUrl(currentVideoId)
-      : "https://example.com/youtube-card";
+      : "https://youtube-cards-0wtu.onrender.com/api/:id";
     updateCodeOutput(cardUrl);
   });
 });
