@@ -9,12 +9,12 @@ _The design of this project is inspired by [lanyard-profile-readme](https://gith
 In a `README.md` file, include the following, replacing `:id` with your Video ID:
 
 ```md
-[![Youtube Card](https://youtube-cards-0wtu.onrender.com/api/:id)](https://www.youtube.com/watch?v=:id)
+[![Youtube Card](https://ytcards.audibert.dev/api/:id)](https://www.youtube.com/watch?v=:id)
 ```
 
 It should display something similar to the following (I am using my video ID as an example):
 
-[![YouTube Card](https://youtube-cards-0wtu.onrender.com/api/UT8Z3U5gDsc)](https://youtube.com/watch?v=UT8Z3U5gDsc)
+[![YouTube Card](https://ytcards.audibert.dev/api/UT8Z3U5gDsc)](https://youtube.com/watch?v=UT8Z3U5gDsc)
 
 When others click it, they will be directed to your actual video. Neat!
 
@@ -38,9 +38,9 @@ _To see the limits and more details for each option, check out the project [Yout
 ## Example URL and Result
 
 ```markdown
-[![YouTube Card](https://youtube-cards-0wtu.onrender.com/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
+[![YouTube Card](https://ytcards.audibert.dev/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
 ```
 
-[![YouTube Card](https://youtube-cards-0wtu.onrender.com/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
+[![YouTube Card](https://ytcards.audibert.dev/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
 
 _If you're using this in your profile, feel free to show support and give this repo a ⭐ star! It means a lot, thank you :)_

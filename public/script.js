@@ -62,7 +62,7 @@ function generateCardUrl(videoId) {
   params.append("max_title_lines", maxTitleLinesInput.value || "1");
   params.append("show_duration", showDurationCheckbox.checked);
 
-  const url = `https://youtube-cards-0wtu.onrender.com/api/${videoId}?${params.toString()}`;
+  const url = `https://ytcards.audibert.dev/api/${videoId}?${params.toString()}`;
   console.log("Generated Card URL:", url); // Log the generated URL for debugging
   return url;
 }
@@ -154,7 +154,7 @@ tabButtons.forEach((button) => {
 
     const cardUrl = currentVideoId
       ? generateCardUrl(currentVideoId)
-      : "https://youtube-cards-0wtu.onrender.com/api/:id";
+      : "https://ytcards.audibert.dev/api/:id";
     updateCodeOutput(cardUrl);
   });
 });
