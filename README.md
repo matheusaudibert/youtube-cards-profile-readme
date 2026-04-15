@@ -38,7 +38,7 @@ _To see the limits and more details for each option, check out the project [Yout
 ## Example URL and Result
 
 ```markdown
-[![YouTube Card](https://ytcards.audibert.dev/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
+[![YouTube Card](https://youtube-cards.audibert.dev/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
 ```
 
 [![YouTube Card](https://youtube-cards.audibert.dev/api/J75GuCvhLAE?theme=dark&background_color=283d7e&border_radius=10&title_color=FFFFFF&stats_color=DEDEDE&max_title_lines=1&width=250&show_duration=true)](https://www.youtube.com/watch?v=J75GuCvhLAE)
