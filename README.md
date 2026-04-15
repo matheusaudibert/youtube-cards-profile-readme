@@ -9,7 +9,7 @@ _The design of this project is inspired by [lanyard-profile-readme](https://gith
 In a `README.md` file, include the following, replacing `:id` with your Video ID:
 
 ```md
-[![Youtube Card](https://ytcards.audibert.dev/api/:id)](https://www.youtube.com/watch?v=:id)
+[![Youtube Card](https://youtube-cards.audibert.dev/api/:id)](https://www.youtube.com/watch?v=:id)
 ```
 
 It should display something similar to the following (I am using my video ID as an example):
