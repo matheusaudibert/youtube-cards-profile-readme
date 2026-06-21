@@ -154,7 +154,7 @@ tabButtons.forEach((button) => {
 
     const cardUrl = currentVideoId
       ? generateCardUrl(currentVideoId)
-      : "https://ytcards.audibert.dev/api/:id";
+      : "https://youtube-cards.audibert.dev/api/:id";
     updateCodeOutput(cardUrl);
   });
 });
